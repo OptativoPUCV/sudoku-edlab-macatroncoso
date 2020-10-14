@@ -56,6 +56,7 @@ List* list=createList();
        if(n->sudo[i][j]== 0){
          for ( k = 1 ; k <=9 ; k++){
           Node * adj_n = createNode();
+          adj_n = n;
           adj_n->sudo[i][j] = k;
           pushBack(list, adj_n);
           }
