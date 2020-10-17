@@ -87,11 +87,10 @@ Node* DFS(Node* initial, int* cont){
   if (is_final(initial)) return initial;
   List* adj=get_adj_nodes(initial);
    Node* aux= first(adj);
-     while(aux){
+     while(aux != NULL){
         push(S,aux);
         aux=next(adj);
      }
-    free(initial);
   } 
   return NULL;
 }
