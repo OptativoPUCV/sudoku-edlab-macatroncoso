@@ -48,14 +48,14 @@ int i,j,x,y,k;
          if (n->sudo[i][j] == n->sudo[i+1][j+1])  return 0;
             for ( x = i ; x < i + 3 ; x++){
                 for ( y = j ; y < j + 3 ; y++){
-                    if(n->sudo[x][y]){
+                  if(n->sudo[x][y]){
                     for (k = 0 ; k < 9 ; k++){ //revisa horizontal
                      if (n->sudo[i][j] == n->sudo[i+1][j+1]) return 0;
                     for(k = 0 ; k < 9 ; k++){ //revisa vertical
-                      if (n->sudo[j][i] != n->sudo[j+1][i+1])  return 0;
+                      if (n->sudo[j][i] == n->sudo[j+1][i+1])  return 0;
                      }
                     }
-                    }  
+                  }  
               }
              }
          }
@@ -66,7 +66,6 @@ int i,j,x,y,k;
 
 List* get_adj_nodes(Node* n){
 List* list=createList();
-
    int i,j,k; 
    for(i=0;i<9;i++){
      for(j=0;j<9;j++){
