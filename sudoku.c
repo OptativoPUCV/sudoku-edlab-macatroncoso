@@ -55,12 +55,12 @@ int i,j,x,y,k,p;
       for (k = 0 ; k < 9 ; k++){ //revisa horizontal
         for (p = 0 ; p < 8 ; k++){
           if (n->sudo[k][p] == n->sudo[k][p+1]) return  0;
-           }
+       }
       }
                
       for(k = 0 ; k < 9 ; k++){ //revisa vertical
-          for (p = 0 ; p < 9 ; k++){
-             if ((n->sudo[p][k] == n->sudo[p+1][k]) && (p<=7))  return 1 ;
+          for (p = 0 ; p < 8 ; k++){
+             if (n->sudo[p][k] == n->sudo[p+1][k])  return 0;
               }
        }   
   return 1;
@@ -99,9 +99,22 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
-
+  Stack* S = createStack();
+  push(S,initial);
+  while (get_size(S) != 0){
+  if (is_final(initial)) popFront(S);
+  List* adj=get_adj_nodes(initial);
+   Node* aux= first(adj);
+     while(aux != NULL){
+        push(S,aux);
+        aux=next(adj);
+     }
+   free(initial);
+   cont++;
+  } 
   return NULL;
 }
+
 
 
 
