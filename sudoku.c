@@ -44,8 +44,8 @@ void print_node(Node* n){
 int is_valid(Node* n){
 int i,j,x,y,k;
     for ( i = 0 ; i < 9 ; i+=3){
-        for ( j = 0 ; j < 9 ; j+=3){ //j se posiciona en la primera casilla de cada submatriz
-         if (n->sudo[i][j] != n->sudo[i+1][j+1]) continue; 
+        for ( j = 0 ; j < 9 ; j+=3){ 
+         if (n->sudo[i][j] != n->sudo[i+1][j+1]) continue;
             for ( x = i ; x < i + 3 ; x++){
                 for ( y = j ; y < j + 3 ; y++){
                     if(n->sudo[x][y])
@@ -58,10 +58,10 @@ int i,j,x,y,k;
                 }
             }
         }
-     return 0;
+     return 1;
      
     }
-    return 1;
+    return 0;
 }
 
 
