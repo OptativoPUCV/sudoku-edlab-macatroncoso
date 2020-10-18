@@ -50,9 +50,9 @@ int i,j,x,y,k;
                 for ( y = j ; y < j + 3 ; y++){
                   if(n->sudo[x][y]){
                     for (k = 0 ; k < 9 ; k++){ //revisa horizontal
-                     if (n->sudo[i][j] == n->sudo[i+1][j+1]) return 0;
+                     if (n->sudo[i][j] == n->sudo[x+1][y+1]) return 0;
                     for(k = 0 ; k < 9 ; k++){ //revisa vertical
-                      if (n->sudo[j][i] == n->sudo[j+1][i+1])  return 0;
+                      if (n->sudo[j][i] == n->sudo[y+1][x+1])  return 0;
                      }
                     }
                   }  
