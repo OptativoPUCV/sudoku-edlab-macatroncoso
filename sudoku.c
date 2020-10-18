@@ -42,18 +42,22 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-int i,j,x,y,k;
+int i,j,x,y,k,p;
     for ( i = 0 ; i < 9 ; i+=3){
         for ( j = 0 ; j < 9 ; j+=3){ 
             for ( x = i ; x < i + 3 ; x++){
                 for ( y = j ; y < j + 3 ; y++){
                   if(n->sudo[x][y] == n->sudo[x][y+1]) return 0;
                     for (k = 0 ; k < 9 ; k++){ //revisa horizontal
-                     if (n->sudo[x][y] == n->sudo[x][y + 1]) return 0;
+                      for (p = 0 ; p < 9 ; k++){
+                     if (n->sudo[p][k] == n->sudo[p][k + 1]) return 0;
                     for(k = 0 ; k < 9 ; k++){ //revisa vertical
-                      if (n->sudo[y][x] == n->sudo[y][x + 1])  return 0;
+                      for (p = 0 ; p < 9 ; k++){
+                      if (n->sudo[k][p] == n->sudo[k][p + 1])  return 0;
                      }
+                    }
                     }  
+                   }  
               }
              }
          }
