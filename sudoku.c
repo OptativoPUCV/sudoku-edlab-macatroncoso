@@ -54,13 +54,13 @@ int i,j,x,y,k,p;
      }
       for (k = 0 ; k < 9 ; k++){ //revisa horizontal
         for (p = 0 ; p < 9 ; k++){
-          if ((n->sudo[k][p] == n->sudo[k][p+1]) && (p<=7)) return 1 ;
+          if ((n->sudo[k][p] == n->sudo[k][p+1]) && (p<=7)) return  0;
            }
       }
-                
+               
       for(k = 0 ; k < 9 ; k++){ //revisa vertical
           for (p = 0 ; p < 9 ; k++){
-             if ((n->sudo[p][k] == n->sudo[p+1][k]) && (p<=7))  return 1;
+             if ((n->sudo[p][k] == n->sudo[p+1][k]) && (p<=7))  return 0 ;
               }
        }   
   return 1;
