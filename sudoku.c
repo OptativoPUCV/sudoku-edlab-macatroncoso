@@ -42,7 +42,7 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-int i,j,x,y,k,p;
+int i,j,x,y;
     for ( i = 0 ; i < 9 ; i+=3){
         for ( j = 0 ; j < 9 ; j+=3){ 
             for ( x = i ; x < i + 3 ; x++){
@@ -53,7 +53,6 @@ int i,j,x,y,k,p;
          }
      }
     
-    //Linear check
     for (i=0; i<9; i++){    
       int * numbers= (int*) malloc(10 * sizeof(int));
       for (j=0; j<9; j++){
@@ -67,12 +66,20 @@ int i,j,x,y,k,p;
       }
       free(numbers);
     }
-               
-      for(k = 0 ; k < 9 ; k++){ //revisa vertical
-          for (p = 0 ; p < 8 ; k++){
-             if (n->sudo[p][k] == n->sudo[p+1][k])  return 0;
-              }
-       }   
+    for (i=0; i<9; i++){    
+      int * numbers= (int*) malloc(10 * sizeof(int));
+      for (j=0; j<9; j++){
+        if (numbers[i] == 0){
+          n->sudo[j][i] = j;  
+          numbers[i] = 1;
+        }
+        else{
+          return 0;
+        }
+      }
+      free(numbers);
+    } 
+
   return 1;
 }
 
