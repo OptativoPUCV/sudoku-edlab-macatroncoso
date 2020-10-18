@@ -54,7 +54,7 @@ int i,j,x,y,k,p;
      }
       for (k = 0 ; k < 9 ; k++){ //revisa horizontal
         for (p = 0 ; p < 9 ; k++){
-          if (n->sudo[k][p] == n->sudo[k][p+1]) return 1;
+          if (n->sudo[k][p] == n->sudo[k][p+1]) return 0;
            }
       }
                 
