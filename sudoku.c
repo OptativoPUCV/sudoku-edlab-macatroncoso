@@ -47,7 +47,7 @@ int i,j,x,y,k,p;
         for ( j = 0 ; j < 9 ; j+=3){ 
             for ( x = i ; x < i + 3 ; x++){
                 for ( y = j ; y < j + 3 ; y++){
-                  if(n->sudo[x][y] == n->sudo[x][y+1]) return 0;
+                  if(n->sudo[x][y] == n->sudo[x][y+1]) return 1;
 
                     for (k = 0 ; k < 9 ; k++){ //revisa horizontal
                       for (p = 0 ; p < 9 ; k++){
