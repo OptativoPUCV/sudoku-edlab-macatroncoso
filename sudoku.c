@@ -52,11 +52,21 @@ int i,j,x,y,k,p;
              }
          }
      }
-      for (k = 0 ; k < 9 ; k++){ //revisa horizontal
-        for (p = 0 ; p < 8 ; k++){
-          if (n->sudo[k][p] == n->sudo[k][p+1]) return  0;
-       }
+    
+    //Linear check
+    for (i=0; i<9; i++){    
+      int * numbers= (int*) malloc(10 * sizeof(int));
+      for (j=0; j<9; j++){
+        if (numbers[j] == 0){
+          n->sudo[i][j] = j;  
+          numbers[j] = 1;
+        }
+        else{
+          return 0;
+        }
       }
+      free(numbers);
+    }
                
       for(k = 0 ; k < 9 ; k++){ //revisa vertical
           for (p = 0 ; p < 8 ; k++){
@@ -102,16 +112,16 @@ Node* DFS(Node* initial, int* cont){
   Stack* S = createStack();
   push(S,initial);
   while (get_size(S) != 0){
-  if (is_final(initial)){
-     free(initial);
-     popFront(S);
-  }
-  List* adj=get_adj_nodes(initial);
-   Node* aux= first(adj);
-     while(aux != NULL){
-        push(S,aux);
-        aux=next(adj);
+  Node * aux  = top(S);
+  popFront(S);
+  if (is_final(aux)) return aux;
+  List* adj=get_adj_nodes(aux);
+   Node* aux2= first(adj);
+     while(aux2 != NULL){
+        push(S,aux2);
+        aux2=next(adj);
      }
+   free(initial);
    cont++;
   } 
   return NULL;
