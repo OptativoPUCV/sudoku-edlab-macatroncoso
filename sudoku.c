@@ -102,7 +102,10 @@ Node* DFS(Node* initial, int* cont){
   Stack* S = createStack();
   push(S,initial);
   while (get_size(S) != 0){
-  if (is_final(initial)) popFront(S);
+  if (is_final(initial)){
+     free(initial);
+     popFront(S);
+  }
   List* adj=get_adj_nodes(initial);
    Node* aux= first(adj);
      while(aux != NULL){
