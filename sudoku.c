@@ -67,17 +67,17 @@ int i,j,x,y;
       free(numbers);
     }
     for (i=0; i<9; i++){    
-      int * numbers= (int*) malloc(10 * sizeof(int));
+      int * numbers2= (int*) malloc(10 * sizeof(int));
       for (j=0; j<9; j++){
-        if (numbers[i] == 0){
+        if (numbers2[i] == 0){
           n->sudo[j][i] = j;  
-          numbers[i] = 1;
+          numbers2[i] = 1;
         }
         else{
           return 0;
         }
       }
-      free(numbers);
+      free(numbers2);
     } 
 
   return 1;
