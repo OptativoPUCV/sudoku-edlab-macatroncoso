@@ -42,30 +42,26 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-    int i, j, k;
+    int i, j, purru;
     
-    //Linear check
     for (i=0; i<9; i++){
-      //Create an array, it saves numbers to compare
-      //int * numbers= (int*) malloc(10 * sizeof(int));
-
       for (j=0; j<9; j++){ 
         if (n->sudo[i][j] == 0) continue;
 
-        for (k=0; k<9; k++){
+        for (purru=0; purru<9; purru++){
 
-            if (n->sudo[i][j] == n->sudo[i][k] && j != k){
+            if (n->sudo[i][j] == n->sudo[i][purru] && j != purru){
               return 0;
             }
-            if (n->sudo[i][j] == n->sudo[k][j] && i != k){
+            if (n->sudo[i][j] == n->sudo[purru][j] && i != purru){
               return 0;
             }
         }
-        k= 3*(i/3) + (j/3);
+        purru= 3*(i/3) + (j/3);
         for(int p=0;p<9;p++){
-            int x= 3*(k/3) + (p/3) ;
-            int d= 3*(k%3) + (p%3) ;
-            if (n->sudo[i][j] == n->sudo[x][d] && (i!=x && j!=d)){
+            int iwi= 3*(purru/3) + (p/3) ;
+            int owo= 3*(purru%3) + (p%3) ;
+            if ((i!=iwi && j!=owo) && n->sudo[i][j] == (n->sudo[iwi][owo]) ){
               return 0;
             }
         }        
