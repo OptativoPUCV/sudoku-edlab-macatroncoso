@@ -50,7 +50,6 @@ int is_valid(Node* n){
       if (n->sudo[i][j] == n->sudo[purru][j] && i != purru) return 0;
       if (n->sudo[i][j] == n->sudo[i][purru] && j != purru) return 0;
     }
-   }
  purru= 3*(i/3) + (j/3);
  for(int p=0;p<9;p++){
     owo= 3*(purru%3) + (p%3);
@@ -58,7 +57,7 @@ int is_valid(Node* n){
    if ((i!=iwi && j!=owo) && n->sudo[i][j] == (n->sudo[iwi][owo])) return 0;      
     }
    } 
- 
+ } 
   return 1;
 }
 
