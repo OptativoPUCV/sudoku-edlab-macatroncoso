@@ -45,13 +45,13 @@ int is_valid(Node* n){
   int i,j,purru,iwi,owo;
  for (i=0; i<9; i++){
    for (j=0; j<9; j++){ 
-      purru= 3*(i/3) + (j/3);
+   if (n->sudo[i][j] == 0) continue;
+ purru= 3*(i/3) + (j/3);
  for(int p=0;p<9;p++){
     owo= 3*(purru%3) + (p%3);
         iwi= 3*(purru/3) + (p/3);
    if ((i!=iwi && j!=owo) && n->sudo[i][j] == (n->sudo[iwi][owo])) return 0;      
     }
-   if (n->sudo[i][j] == 0) continue;
    for (purru=0; purru<9; purru++){
       if (n->sudo[i][j] == n->sudo[purru][j] && i != purru) return 0;
       if (n->sudo[i][j] == n->sudo[i][purru] && j != purru) return 0;
