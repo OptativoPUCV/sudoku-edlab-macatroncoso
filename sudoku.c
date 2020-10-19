@@ -52,7 +52,6 @@ int i,j,x,y;
              }
          }
      }
-    
     for (i=0; i<9; i++){    
       int * numbers= (int*) malloc(10 * sizeof(int));
       for (j=0; j<9; j++){
@@ -121,7 +120,9 @@ Node* DFS(Node* initial, int* cont){
   while (get_size(S) != 0){
   Node * aux  = top(S);
   popFront(S);
-  if ((is_final(aux)) == 1) return aux;
+  if ((is_final(aux)) == 1){
+  printf("%d",initial->sudo[0][0]);
+    return aux;}
   List* adj=get_adj_nodes(aux);
    Node* aux2= first(adj);
      while(aux2 != NULL){
