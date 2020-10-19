@@ -464,3 +464,9 @@ Mon Oct 19 01:44:12 UTC 2020:
  tests:  3|3
 total_score: 25/70
 501bedd
+Mon Oct 19 01:45:18 UTC 2020: 
+ sudoku.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
+ tests:  6|2
+total_score: 45/70
+727670d
