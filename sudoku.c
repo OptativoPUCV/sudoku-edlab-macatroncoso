@@ -45,6 +45,7 @@ int is_valid(Node* n){
     int i, j, purru;
     
     for (i=0; i<9; i++){
+
       for (j=0; j<9; j++){ 
         if (n->sudo[i][j] == 0) continue;
 
@@ -57,7 +58,8 @@ int is_valid(Node* n){
               return 0;
             }
         }
-        purru= 3*(i/3) + (j/3);
+    }
+            purru= 3*(i/3) + (j/3);
         for(int p=0;p<9;p++){
             int iwi= 3*(purru/3) + (p/3) ;
             int owo= 3*(purru%3) + (p%3) ;
@@ -66,7 +68,6 @@ int is_valid(Node* n){
             }
         }        
       }
-    }
   return 1;
 }
 
