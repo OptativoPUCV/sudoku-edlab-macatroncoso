@@ -45,21 +45,10 @@ int is_valid(Node* n){
     int i, j, purru;
     
     for (i=0; i<9; i++){
-
       for (j=0; j<9; j++){ 
         if (n->sudo[i][j] == 0) continue;
 
-        for (purru=0; purru<9; purru++){
-
-            if (n->sudo[i][j] == n->sudo[i][purru] && j != purru){
-              return 0;
-            }
-            if (n->sudo[i][j] == n->sudo[purru][j] && i != purru){
-              return 0;
-            }
-        }
-    }
-            purru= 3*(i/3) + (j/3);
+             purru= 3*(i/3) + (j/3);
         for(int p=0;p<9;p++){
             int iwi= 3*(purru/3) + (p/3) ;
             int owo= 3*(purru%3) + (p%3) ;
@@ -68,6 +57,17 @@ int is_valid(Node* n){
             }
         }        
       }
+
+        for (purru=0; purru<9; purru++){
+            if (n->sudo[i][j] == n->sudo[i][purru] && j != purru){
+              return 0;
+            }
+            if (n->sudo[i][j] == n->sudo[purru][j] && i != purru){
+              return 0;
+            }
+        }
+
+    }
   return 1;
 }
 
