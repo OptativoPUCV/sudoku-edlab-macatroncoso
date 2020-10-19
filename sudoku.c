@@ -42,29 +42,38 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-int i,j,x,y,k,p;
-    for ( i = 0 ; i < 9 ; i+=3){
-        for ( j = 0 ; j < 9 ; j+=3){ 
-            for ( x = i ; x < i + 3 ; x++){
-                for ( y = j ; y < j + 3 ; y++){
-                  if((n->sudo[x][y] == n->sudo[x][y+1]) && (y <= j-1)) return 0;
-              }
-             }
-         }
-     }
-      for (k = 0 ; k < 9 ; k++){ //revisa horizontal
-        for (p = 0 ; p < 8 ; k++){
-          if (n->sudo[k][p] == n->sudo[k][p+1]) return  0;
-       }
+    int i, j, k;
+    
+    //Linear check
+    for (i=0; i<9; i++){
+      //Create an array, it saves numbers to compare
+      //int * numbers= (int*) malloc(10 * sizeof(int));
+
+      for (j=0; j<9; j++){ 
+        if (n->sudo[i][j] == 0) continue;
+
+        for (k=0; k<9; k++){
+
+            if (n->sudo[i][j] == n->sudo[i][k] && j != k){
+              return 0;
+            }
+            if (n->sudo[i][j] == n->sudo[k][j] && i != k){
+              return 0;
+            }
+        }
+        k= 3*(i/3) + (j/3);
+        for(int p=0;p<9;p++){
+            int x= 3*(k/3) + (p/3) ;
+            int d= 3*(k%3) + (p%3) ;
+            if (n->sudo[i][j] == n->sudo[x][d] && (i!=x && j!=d)){
+              return 0;
+            }
+        }        
       }
-               
-      for(k = 0 ; k < 9 ; k++){ //revisa vertical
-          for (p = 0 ; p < 8 ; k++){
-             if (n->sudo[p][k] == n->sudo[p+1][k])  return 0;
-              }
-       }   
+    }
   return 1;
 }
+
 
 List* get_adj_nodes(Node* n){
 List* list=createList();
