@@ -42,7 +42,7 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-int i,j,x,y;
+int i,j,x,y,k,p;
     for ( i = 0 ; i < 9 ; i+=3){
         for ( j = 0 ; j < 9 ; j+=3){ 
             for ( x = i ; x < i + 3 ; x++){
@@ -52,36 +52,19 @@ int i,j,x,y;
              }
          }
      }
-    for (i=0; i<9; i++){    
-      int * numbers= (int*) malloc(10 * sizeof(int));
-      for (j=0; j<9; j++){
-        if (numbers[j] == 0){
-          n->sudo[i][j] = j;  
-          numbers[j] = 1;
-        }
-        else{
-          return 0;
-        }
+      for (k = 0 ; k < 9 ; k++){ //revisa horizontal
+        for (p = 0 ; p < 8 ; k++){
+          if (n->sudo[k][p] == n->sudo[k][p+1]) return  0;
+       }
       }
-      free(numbers);
-    }
-    for (i=0; i<9; i++){    
-      int * numbers2= (int*) malloc(10 * sizeof(int));
-      for (j=0; j<9; j++){
-        if (numbers2[i] == 0){
-          n->sudo[j][i] = j;  
-          numbers2[i] = 1;
-        }
-        else{
-          return 0;
-        }
-      }
-      free(numbers2);
-    } 
-
+               
+      for(k = 0 ; k < 9 ; k++){ //revisa vertical
+          for (p = 0 ; p < 8 ; k++){
+             if (n->sudo[p][k] == n->sudo[p+1][k])  return 0;
+              }
+       }   
   return 1;
 }
-
 
 List* get_adj_nodes(Node* n){
 List* list=createList();
@@ -120,9 +103,7 @@ Node* DFS(Node* initial, int* cont){
   while (get_size(S) != 0){
   Node * aux  = top(S);
   popFront(S);
-  if ((is_final(aux)) == 1){
-  printf("%d",initial->sudo[0][0]);
-    return aux;}
+  if ((is_final(aux)) == 1) return aux;
   List* adj=get_adj_nodes(aux);
    Node* aux2= first(adj);
      while(aux2 != NULL){
