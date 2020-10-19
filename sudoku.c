@@ -75,11 +75,12 @@ List* list=createList();
      for(j=0;j<9;j++){
        if(n->sudo[i][j] == 0){
          for ( k = 1 ; k <=9 ; k++){
-          Node * adj_n = createNode();
-          *adj_n = *n;
-          adj_n->sudo[i][j] = k;
-          pushBack(list, adj_n);
+          n->sudo[i][j] = k;
+          if (is_valid(n)){
+          Node * neuwu = copy(n);
+          pushBack(list, neuwu);
           }
+         }
        }
    }
 }
